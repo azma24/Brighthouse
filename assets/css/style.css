@@ -37,16 +37,19 @@ button {
   padding: 0;
 }
 
-.bg-video {
+.video {
+  height: 100vh;
+}
+.video__bg {
   position: fixed;
   top: 0;
-  left: 300px;
   right: 0;
-  height: 100vh;
+  bottom: 0;
+  left: 300px;
   z-index: -1;
+  opacity: 0.5;
 }
-
-.bg-video img {
+.video__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -85,7 +88,6 @@ button {
 
 .main {
   margin-left: 300px;
-  margin-top: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */
