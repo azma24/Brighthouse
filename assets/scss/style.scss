@@ -175,3 +175,34 @@ button {
     font-size: 0.75rem;
   }
 }
+
+// feature
+.feature {
+  background-color: rgba(18, 18, 18, 0.8);
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    color: #fff;
+    text-align: center;
+  }
+
+  &__item a {
+    padding: 121px 107px;
+    width: 258px;
+    height: 258px;
+    border-radius: 50%;
+    border: #fff 1px solid;
+  }
+
+  &__item h3 {
+    margin-top: 15px;
+  }
+
+  &__item p {
+    margin-top: 5px;
+  }
+}

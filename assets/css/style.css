@@ -148,4 +148,30 @@ button {
   font-size: 0.75rem;
 }
 
+.feature {
+  background-color: rgba(18, 18, 18, 0.8);
+}
+.feature__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.feature__item {
+  color: #fff;
+  text-align: center;
+}
+.feature__item a {
+  padding: 121px 107px;
+  width: 258px;
+  height: 258px;
+  border-radius: 50%;
+  border: #fff 1px solid;
+}
+.feature__item h3 {
+  margin-top: 15px;
+}
+.feature__item p {
+  margin-top: 5px;
+}
+
 /*# sourceMappingURL=style.css.map */
