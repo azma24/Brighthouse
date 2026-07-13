@@ -117,6 +117,10 @@ button {
   margin-left: 300px;
 }
 
+.works {
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.8) 0%, rgba(18, 18, 18, 0) 100%);
+  color: #fff;
+}
 .works__list {
   display: grid;
   grid-template-columns: repeat(2, 2fr);

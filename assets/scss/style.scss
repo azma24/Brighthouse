@@ -140,6 +140,13 @@ button {
 
 // works
 .works {
+  background: linear-gradient(
+    to top,
+    rgba(18, 18, 18, 0.8) 0%,
+    rgba(18, 18, 18, 0) 100%
+  );
+  color: #fff;
+
   &__list {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
