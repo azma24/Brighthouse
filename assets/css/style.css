@@ -37,6 +37,34 @@ button {
   padding: 0;
 }
 
+.inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.section-title__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 60px 0;
+}
+.section-title__heading::before, .section-title__heading::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  background: currentColor;
+}
+.section-title--white {
+  color: #fff;
+}
+.section-title--black {
+  color: #121212;
+}
+
 .video {
   height: 100vh;
 }
@@ -47,7 +75,6 @@ button {
   bottom: 0;
   left: 300px;
   z-index: -1;
-  opacity: 0.5;
 }
 .video__bg img {
   width: 100%;
@@ -88,6 +115,37 @@ button {
 
 .main {
   margin-left: 300px;
+}
+
+.works__list {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 56px;
+}
+.works__img {
+  width: 402px;
+  height: auto;
+  position: relative;
+  border: #fff 1px solid;
+}
+.works__img img {
+  width: 100%;
+  height: 100%;
+}
+.works__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 -30px 15px -1px rgb(18, 18, 18);
+  z-index: 1;
+}
+.works__label {
+  position: absolute;
+  left: 7px;
+  bottom: 4px;
+  z-index: 2;
+  color: #fff;
+  font-size: 0.75rem;
 }
 
 /*# sourceMappingURL=style.css.map */
