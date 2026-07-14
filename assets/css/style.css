@@ -23,7 +23,7 @@ a {
   display: block;
 }
 
-ul {
+li {
   list-style: none;
 }
 
@@ -45,16 +45,15 @@ button {
 
 .section-title__heading {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
   font-size: 1.75rem;
   font-weight: 700;
   margin: 60px 0;
 }
 .section-title__heading::before, .section-title__heading::after {
   content: "";
-  width: 120px;
+  width: 240px;
   height: 1px;
   background: currentColor;
 }
@@ -76,7 +75,7 @@ button {
   left: 300px;
   z-index: -1;
 }
-.video__bg img {
+.video__bg video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -176,6 +175,58 @@ button {
 }
 .feature__item p {
   margin-top: 5px;
+}
+
+.flow {
+  background-color: #fff;
+  counter-reset: step;
+}
+.flow__text {
+  font-size: 16px;
+  margin: 60px 0 64px 0;
+}
+.flow__list {
+  position: relative;
+  display: inline-block;
+}
+.flow__list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 600px;
+  background: #ffdd00;
+  z-index: 0;
+}
+.flow__item {
+  position: relative;
+  text-align: center;
+  line-height: 80px;
+  width: 200px;
+  height: 80px;
+  margin-bottom: 60px;
+  counter-increment: step;
+  background-color: #414141;
+  color: #fff;
+  z-index: 1;
+}
+.flow__item::before {
+  content: counter(step) ".";
+}
+.flow__item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  width: 0px;
+  height: 0px;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 30px solid #414141;
 }
 
 /*# sourceMappingURL=style.css.map */

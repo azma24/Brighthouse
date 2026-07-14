@@ -24,7 +24,7 @@ a {
   display: block;
 }
 
-ul {
+li {
   list-style: none;
 }
 
@@ -48,9 +48,8 @@ button {
 .section-title {
   &__heading {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
     font-size: 1.75rem;
     font-weight: 700;
     margin: 60px 0;
@@ -58,9 +57,9 @@ button {
     &::before,
     &::after {
       content: "";
-      width: 120px;
+      width: 240px;
       height: 1px;
-      background: currentColor;
+      background: currentColor; // 他の要素で指定されたcolorの色の指定に従う
     }
   }
 
@@ -85,7 +84,7 @@ button {
     left: 300px;
     z-index: -1;
 
-    img {
+    video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -140,6 +139,7 @@ button {
 
 // works
 .works {
+  // グラデーションを作るCSS関数
   background: linear-gradient(
     to top,
     rgba(18, 18, 18, 0.8) 0%,
@@ -169,6 +169,7 @@ button {
     content: "";
     position: absolute;
     inset: 0;
+    // 内側に影を作る
     box-shadow: inset 0 -30px 15px -1px rgba(18, 18, 18);
     z-index: 1;
   }
@@ -211,5 +212,70 @@ button {
 
   &__item p {
     margin-top: 5px;
+  }
+}
+
+.flow {
+  background-color: #fff;
+  counter-reset: step; // stepという名前のカウンターを作り0にリセットする
+
+  &__text {
+    font-size: 16px;
+    margin: 60px 0 64px 0;
+  }
+
+  &__list {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__list::before {
+    // 黄色い線を描く
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 50px;
+    height: 600px;
+    background: #ffdd00;
+    z-index: 0;
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+    line-height: 80px; // 垂直方向に移動させる、list-itemの仕様は？
+    width: 200px;
+    height: 80px;
+    margin-bottom: 60px;
+    counter-increment: step; // 各liが現れるたびにstep += 1する
+    background-color: #414141;
+    color: #fff;
+    z-index: 1; // 黄色い線より前に出す
+  }
+
+  &__item::before {
+    content: counter(step) "."; // stepに格納されている値を取り出す
+  }
+
+  &__item::after {
+    content: "";
+    position: absolute;
+    left: 50%; // 親要素の半分の位置に持っていく
+    transform: translateX(-50%); // leftでズレた分戻す
+    bottom: -30px; // 三角をはみ出させる
+
+    // 点を描く
+    width: 0px;
+    height: 0px;
+
+    // borderで三角を描く
+    // border同士の境界は45°の斜めになるように描画するというブラウザの特性を利用する
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 30px solid #414141;
   }
 }
