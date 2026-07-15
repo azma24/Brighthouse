@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
@@ -177,46 +178,150 @@ button {
   margin-top: 5px;
 }
 
+/*
+.flow {
+  background-color: #fff;
+  counter-reset: step; // stepという名前のカウンターを作り0にリセットする
+
+  &__step {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 41px;
+  }
+
+  &__text {
+    font-size: 16px;
+    margin: 60px 0 64px 0;
+  }
+
+  &__list {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__list::before {
+    // 黄色い線を描く
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 50px;
+    height: 600px;
+    background: #ffdd00;
+    z-index: 0;
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+    line-height: 80px; // 垂直方向に移動させる、list-itemの仕様は？
+    width: 200px;
+    height: 80px;
+    margin-bottom: 60px;
+    counter-increment: step; // 各liが現れるたびにstep += 1する
+    background-color: #414141;
+    color: #fff;
+    z-index: 1; // 黄色い線より前に出す
+  }
+
+  &__item::before {
+    content: counter(step) "."; // stepに格納されている値を取り出す
+  }
+
+  &__item::after {
+    content: "";
+    position: absolute;
+    left: 50%; // 親要素の半分の位置に持っていく
+    transform: translateX(-50%); // leftでズレた分戻す
+    bottom: -30px; // 三角をはみ出させる
+
+    // 点を描く
+    width: 0px;
+    height: 0px;
+
+    // borderで三角を描く
+    // border同士の境界は45°の斜めになるように描画するというブラウザの特性を利用する
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-top: 30px solid #414141;
+  }
+
+  &__description-title {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+  &__description-title span {
+    background-color: #414141;
+    color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 12px;
+  }
+
+  &__description-title h3 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-bottom: #121212 1px solid;
+  }
+
+}
+*/
 .flow {
   background-color: #fff;
   counter-reset: step;
 }
-.flow__text {
-  font-size: 16px;
+.flow__description {
+  font-size: 1rem;
   margin: 60px 0 64px 0;
 }
 .flow__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   position: relative;
-  display: inline-block;
+}
+.flow {
+  /* 黄色い線 */
 }
 .flow__list::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 100px;
   width: 50px;
-  height: 600px;
+  transform: translateX(-50%);
   background: #ffdd00;
-  z-index: 0;
 }
 .flow__item {
+  display: flex;
+  gap: 41px;
+  counter-increment: step;
+  margin-bottom: 40px;
+}
+.flow {
+  /* ---------- 左 ---------- */
+}
+.flow__visual {
   position: relative;
-  text-align: center;
-  line-height: 80px;
+  z-index: 1;
   width: 200px;
   height: 80px;
-  margin-bottom: 60px;
-  counter-increment: step;
-  background-color: #414141;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #414141;
   color: #fff;
-  z-index: 1;
 }
-.flow__item::before {
-  content: counter(step) ".";
-}
-.flow__item::after {
+.flow__visual::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -227,6 +332,53 @@ button {
   border-left: 100px solid transparent;
   border-right: 100px solid transparent;
   border-top: 30px solid #414141;
+}
+.flow__visual-number::before {
+  content: counter(step) ".";
+}
+.flow {
+  /* ---------- 右 ---------- */
+}
+.flow__content {
+  flex: 1;
+}
+.flow__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.flow__number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #414141;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+.flow__number::before {
+  content: counter(step);
+}
+.flow__body {
+  flex: 1;
+}
+.flow__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.flow__divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 10px 0;
+  background: #333;
+}
+.flow__text {
+  font-size: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
