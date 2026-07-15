@@ -187,6 +187,7 @@ button {
 // feature
 .feature {
   background-color: rgba(18, 18, 18, 0.8);
+
   &__list {
     display: flex;
     justify-content: space-between;
@@ -215,11 +216,10 @@ button {
   }
 }
 
-/*
 .flow {
   background-color: #fff;
   counter-reset: step; // stepという名前のカウンターを作り0にリセットする
-  
+
   &__step {
     display: flex;
     justify-content: space-between;
@@ -227,11 +227,12 @@ button {
     gap: 41px;
   }
 
-  &__text {
+  &__description {
     font-size: 16px;
     margin: 60px 0 64px 0;
   }
 
+  // 左側
   &__list {
     position: relative;
     display: inline-block;
@@ -254,8 +255,9 @@ button {
 
   &__item {
     position: relative;
-    text-align: center;
-    line-height: 80px; // 垂直方向に移動させる、list-itemの仕様は？
+    display: flex; // 文字を中央揃えにするためのflex
+    justify-content: center;
+    align-items: center;
     width: 200px;
     height: 80px;
     margin-bottom: 60px;
@@ -287,145 +289,35 @@ button {
     border-top: 30px solid #414141;
   }
 
-  &__description-title {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-  }
-
-  &__description-title span {
-    background-color: #414141;
-    color: #fff;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    line-height: 12px;
-  }
-
-  &__description-title h3 {
-    font-size: 1.25rem;
-    font-weight: 400;
-    border-bottom: #121212 1px solid;
-  }
-
-}
-*/
-
-.flow {
-  background-color: #fff;
-  counter-reset: step;
-
-  &__description {
-    font-size: 1rem;
-    margin: 60px 0 64px 0;
-  }
-
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-
-  /* 黄色い線 */
-  &__list::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 100px;
-    width: 50px;
-    transform: translateX(-50%);
-    background: #ffdd00;
-  }
-
-  &__item {
-    display: flex;
-    gap: 41px;
-    counter-increment: step;
-    margin-bottom: 40px;
-  }
-
-  /* ---------- 左 ---------- */
-
-  &__visual {
-    position: relative;
-    z-index: 1;
-    width: 200px;
-    height: 80px;
-    display: flex; // 中の文字を中央揃えにするためにflexを使うことがある
-    justify-content: center;
-    align-items: center;
-    background: #414141;
-    color: #fff;
-  }
-
-  &__visual::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -30px;
-    width: 0px;
-    height: 0px;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-top: 30px solid #414141;
-  }
-
-  &__visual-number::before {
-    content: counter(step) ".";
-  }
-
-  /* ---------- 右 ---------- */
+  // 右側
 
   &__content {
-    flex: 1;
-  }
-
-  &__header {
     display: flex;
-    align-items: flex-start;
     gap: 10px;
   }
 
   &__number {
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
     border-radius: 50%;
-    background: #414141;
-    color: #fff;
+    width: 35px;
+    height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #414141;
+    color: #fff;
     font-size: 1rem;
   }
 
-  &__number::before {
-    content: counter(step);
-  }
-
-  &__body {
-    flex: 1;
-  }
-
   &__title {
-    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
     font-size: 1.25rem;
-    font-weight: 400;
-  }
-
-  &__divider {
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin: 10px 0;
-    background: #333;
   }
 
   &__text {
+    margin: 10px 0;
+    margin-bottom: 43px;
     font-size: 1rem;
   }
 }
