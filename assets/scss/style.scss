@@ -52,7 +52,7 @@ button {
     align-items: center;
     font-size: 1.75rem;
     font-weight: 700;
-    margin: 60px 0;
+    margin-bottom: 60px;
 
     &::before,
     &::after {
@@ -70,6 +70,11 @@ button {
   &--black {
     color: #121212;
   }
+}
+
+.description {
+  font-size: 16px;
+  margin: 60px 0 64px 0;
 }
 
 // Background video
@@ -150,7 +155,7 @@ button {
   &__list {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
-    gap: 56px;
+    gap: 50px;
   }
 
   &__img {
@@ -187,6 +192,7 @@ button {
 // feature
 .feature {
   background-color: rgba(18, 18, 18, 0.8);
+  padding-bottom: 80px;
 
   &__list {
     display: flex;
@@ -205,6 +211,9 @@ button {
     height: 258px;
     border-radius: 50%;
     border: #fff 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__item h3 {
@@ -219,17 +228,13 @@ button {
 .flow {
   background-color: #fff;
   counter-reset: step; // stepという名前のカウンターを作り0にリセットする
+  padding-top: 40px;
 
   &__step {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 41px;
-  }
-
-  &__description {
-    font-size: 16px;
-    margin: 60px 0 64px 0;
   }
 
   // 左側
@@ -267,6 +272,10 @@ button {
     z-index: 1; // 黄色い線より前に出す
   }
 
+  &__item:last-child {
+    margin-bottom: 0;
+  }
+
   &__item::before {
     content: counter(step) "."; // stepに格納されている値を取り出す
   }
@@ -290,10 +299,16 @@ button {
   }
 
   // 右側
-
   &__content {
     display: flex;
     gap: 10px;
+  }
+
+  // 5番目のflow__contentの中のflow__textを指定したい
+  &__content:last-child {
+    .flow__text {
+      margin-bottom: 0;
+    }
   }
 
   &__number {
@@ -319,5 +334,110 @@ button {
     margin: 10px 0;
     margin-bottom: 43px;
     font-size: 1rem;
+  }
+}
+
+.information {
+  background-color: #fff;
+  padding-bottom: 80px;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 46px;
+  }
+
+  &__item {
+    position: relative;
+    width: 256px;
+    height: 189px;
+    border: #121212 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item img {
+    margin-bottom: 5px;
+  }
+
+  &__item:hover {
+    outline: 3px solid #121212; // 要素のサイズを変えずに線をつける
+  }
+
+  &__item::before {
+    position: absolute;
+    content: "";
+    right: 4px;
+    bottom: 4px;
+    border-right: 20px solid #121212;
+    border-top: 20px solid transparent;
+  }
+}
+
+.footer {
+  background-color: #121212;
+  color: #fff;
+
+  &__copy {
+    text-align: center;
+    font-size: 0.75rem;
+    padding-bottom: 20px;
+  }
+}
+
+.menu {
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  &__item {
+    border-right: #fff 1px solid;
+    padding: 0 20px;
+  }
+
+  &__item:last-child {
+    border-right: none;
+  }
+}
+
+.to-top {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background-color: #121212;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+  z-index: 100;
+
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+  }
+
+  &.is-show {
+    opacity: 1;
+    visibility: visible;
   }
 }
