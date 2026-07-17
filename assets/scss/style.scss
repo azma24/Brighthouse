@@ -59,7 +59,7 @@ button {
     &::before,
     &::after {
       content: "";
-      width: 240px;
+      width: 28%;
       height: 1px;
       background: currentColor; // 他の要素で指定されたcolorの色の指定に従う
     }
@@ -86,7 +86,6 @@ button {
   &__bg {
     position: fixed;
     top: 0;
-    right: 0;
     bottom: 0;
     left: 300px;
     z-index: -1;
@@ -143,9 +142,6 @@ button {
   display: none;
   width: 30px;
   height: 30px;
-  background: none;
-  cursor: pointer;
-  padding: 0;
   z-index: 2000;
 
   span {
@@ -235,7 +231,7 @@ button {
   }
 
   &__img {
-    width: 402px;
+    width: 100%;
     height: auto;
     position: relative;
     border: #fff 1px solid;
@@ -279,12 +275,12 @@ button {
   &__item {
     color: #fff;
     text-align: center;
+    width: 30%;
   }
 
   &__item a {
-    padding: 121px 107px;
-    width: 258px;
-    height: 258px;
+    width: 100%;
+    padding: calc(50% - 11px) 0;
     border-radius: 50%;
     border: #fff 1px solid;
     @include mixin.flex-center;
@@ -420,8 +416,8 @@ button {
 
   &__item {
     position: relative;
-    width: 256px;
-    height: 189px;
+    width: 30%;
+    padding: 50px 0;
     border: #121212 1px solid;
     @include mixin.flex-center;
     flex-direction: column;
@@ -509,6 +505,15 @@ button {
 }
 
 @media (max-width: 960px) {
+  .inner {
+    padding: 60px 20px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin: 30px 0;
+  }
+
   .header {
     width: 100%;
     height: 72px;
@@ -536,10 +541,10 @@ button {
       position: fixed;
       top: 0;
       left: 0;
+      bottom: 0;
       padding: 0 25px;
 
       width: 300px;
-      height: 100vh;
       background: #fff;
 
       opacity: 0;
@@ -564,6 +569,18 @@ button {
     }
   }
 
+  .section-title {
+    &__heading {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+
+      &::before,
+      &::after {
+        width: 18%;
+      }
+    }
+  }
+
   .nav {
     &__item {
       margin: 20px 0;
@@ -572,11 +589,60 @@ button {
 
   .video {
     &__bg {
-      top: 72px;
       left: 0;
+      height: 80vh;
     }
   }
   .main {
     margin-left: 0;
+  }
+
+  .works {
+    &__list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .flow {
+    padding-top: 0;
+
+    &__step {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    &__list {
+      margin-bottom: 80px;
+    }
+
+    &__item {
+      width: calc(100vw - 80px);
+
+      &::after {
+        border-left: calc(50vw - 40px) solid transparent;
+        border-right: calc(50vw - 40px) solid transparent;
+      }
+    }
+  }
+
+  .information {
+    padding-bottom: 60px;
+    &__list {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      gap: 20px;
+    }
+
+    &__item {
+      width: 60%;
+    }
+  }
+
+  .menu {
+    &__list {
+      flex-wrap: wrap;
+    }
   }
 }
