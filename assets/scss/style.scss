@@ -1,3 +1,5 @@
+@use "utility/mixin";
+
 // Reset & Base
 *,
 *::before,
@@ -104,7 +106,6 @@ button {
   z-index: 10;
   width: 300px;
   height: 100vh;
-  border: #121212 1px solid;
 
   &__inner {
     padding: 40px 55px 38px 45px;
@@ -135,6 +136,81 @@ button {
   &__item {
     margin: 16px 0;
   }
+}
+
+// ハンバーガーメニュー
+.hamburger {
+  display: none;
+  width: 30px;
+  height: 30px;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2000;
+
+  span {
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: #121212;
+    transition: 0.5s ease;
+
+    //Modifierにできるのでは？
+    &:nth-child(1) {
+      top: 4px;
+    }
+
+    &:nth-child(2) {
+      top: 14px;
+    }
+
+    &:nth-child(3) {
+      bottom: 4px;
+    }
+  }
+
+  &.active {
+    span {
+      background: #fff;
+
+      // ✖変形
+      &:nth-child(1) {
+        transform: translateY(10px) rotate(-315deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-10px) rotate(315deg);
+      }
+    }
+  }
+}
+
+// オーバーレイ
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.3s ease;
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 100;
 }
 
 // main
@@ -211,9 +287,7 @@ button {
     height: 258px;
     border-radius: 50%;
     border: #fff 1px solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixin.flex-center;
   }
 
   &__item h3 {
@@ -260,9 +334,7 @@ button {
 
   &__item {
     position: relative;
-    display: flex; // 文字を中央揃えにするためのflex
-    justify-content: center;
-    align-items: center;
+    @include mixin.flex-center;
     width: 200px;
     height: 80px;
     margin-bottom: 60px;
@@ -316,9 +388,7 @@ button {
     border-radius: 50%;
     width: 35px;
     height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixin.flex-center;
     background-color: #414141;
     color: #fff;
     font-size: 1rem;
@@ -353,10 +423,8 @@ button {
     width: 256px;
     height: 189px;
     border: #121212 1px solid;
-    display: flex;
+    @include mixin.flex-center;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 
   &__item img {
@@ -390,9 +458,7 @@ button {
 
 .menu {
   &__list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include mixin.flex-center;
     padding-top: 50px;
     padding-bottom: 60px;
   }
@@ -439,5 +505,78 @@ button {
   &.is-show {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+@media (max-width: 960px) {
+  .header {
+    width: 100%;
+    height: 72px;
+    background-color: #fff;
+    border: none;
+
+    &__inner {
+      padding: 0;
+    }
+
+    &__logo {
+      width: 180px;
+      margin-left: 18px;
+      margin-top: 9px;
+    }
+
+    .hamburger {
+      display: block;
+      position: absolute;
+      top: 21px;
+      right: 18px;
+    }
+
+    &__menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 0 25px;
+
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+
+      opacity: 0;
+      transform: translateX(-100%);
+      pointer-events: none;
+      transition: 0.5s ease;
+      z-index: 1000;
+
+      &.open {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
+
+    &__sns-list {
+      margin-top: 50px;
+    }
+
+    &__sns-item {
+      margin: 20px 0;
+    }
+  }
+
+  .nav {
+    &__item {
+      margin: 20px 0;
+    }
+  }
+
+  .video {
+    &__bg {
+      top: 72px;
+      left: 0;
+    }
+  }
+  .main {
+    margin-left: 0;
   }
 }
