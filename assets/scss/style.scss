@@ -112,10 +112,9 @@ button {
 
   &__logo {
     width: 200px;
-  }
-
-  &__logo img {
-    width: 100%;
+    img {
+      width: 100%;
+    }
   }
 
   &__sns-list {
@@ -150,7 +149,10 @@ button {
     width: 30px;
     height: 2px;
     background: #121212;
-    transition: 0.5s ease;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease,
+      background-color 0.5s ease;
 
     //Modifierにできるのでは？
     &:nth-child(1) {
@@ -195,12 +197,12 @@ button {
   width: 100%;
   height: 100vh;
 
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 
   opacity: 0;
   pointer-events: none;
 
-  transition: 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .overlay.open {
@@ -226,7 +228,7 @@ button {
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(2, 2fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 50px;
   }
 
@@ -235,20 +237,20 @@ button {
     height: auto;
     position: relative;
     border: #fff 1px solid;
-  }
 
-  &__img img {
-    width: 100%;
-    height: 100%;
-  }
+    img {
+      width: 100%;
+      height: 100%;
+    }
 
-  &__img::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    // 内側に影を作る
-    box-shadow: inset 0 -30px 15px -1px rgba(18, 18, 18);
-    z-index: 1;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      // 内側に影を作る
+      box-shadow: inset 0 -30px 15px -1px rgba(18, 18, 18);
+      z-index: 1;
+    }
   }
 
   &__label {
@@ -321,6 +323,7 @@ button {
   }
 }
 
+// 家ができるまでの流れ
 .flow {
   background-color: #fff;
   counter-reset: step; // stepという名前のカウンターを作り0にリセットする
@@ -337,21 +340,21 @@ button {
   &__list {
     position: relative;
     display: inline-block;
-  }
 
-  &__list::before {
-    // 黄色い線を描く
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    &::before {
+      // 黄色い線を描く
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
 
-    width: 50px;
-    height: 600px;
-    background: #ffdd00;
-    z-index: 0;
+      width: 50px;
+      height: 600px;
+      background-color: #ffdd00;
+      z-index: 0;
+    }
   }
 
   &__item {
@@ -364,44 +367,44 @@ button {
     background-color: #414141;
     color: #fff;
     z-index: 1; // 黄色い線より前に出す
-  }
 
-  &__item:last-child {
-    margin-bottom: 0;
-  }
+    &:last-child {
+      margin-bottom: 0;
+    }
 
-  &__item::before {
-    content: counter(step) "."; // stepに格納されている値を取り出す
-  }
+    &::before {
+      content: counter(step) "."; // stepに格納されている値を取り出す
+    }
 
-  &__item::after {
-    content: "";
-    position: absolute;
-    left: 50%; // 親要素の半分の位置に持っていく
-    transform: translateX(-50%); // leftでズレた分戻す
-    bottom: -30px; // 三角をはみ出させる
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%; // 親要素の半分の位置に持っていく
+      transform: translateX(-50%); // leftでズレた分戻す
+      bottom: -30px; // 三角をはみ出させる
 
-    // 点を描く
-    width: 0px;
-    height: 0px;
+      // 点を描く
+      width: 0px;
+      height: 0px;
 
-    // borderで三角を描く
-    // border同士の境界は45°の斜めになるように描画するというブラウザの特性を利用する
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-top: 30px solid #414141;
+      // borderで三角を描く
+      // border同士の境界は45°の斜めになるように描画するというブラウザの特性を利用する
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-top: 30px solid #414141;
+    }
   }
 
   // 右側
   &__content {
     display: flex;
     gap: 10px;
-  }
 
-  // 5番目のflow__contentの中のflow__textを指定したい
-  &__content:last-child {
-    .flow__text {
-      margin-bottom: 0;
+    // 5番目のflow__contentの中のflow__textを指定したい
+    &:last-child {
+      .flow__text {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -418,7 +421,7 @@ button {
 
   &__title {
     padding-bottom: 8px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #121212;
     font-size: 1.25rem;
   }
 
@@ -429,6 +432,7 @@ button {
   }
 }
 
+//問い合わせ
 .information {
   background-color: #fff;
   padding-bottom: 80px;
@@ -447,23 +451,23 @@ button {
     border: #121212 1px solid;
     @include mixin.flex-center;
     flex-direction: column;
-  }
 
-  &__item img {
-    margin-bottom: 5px;
-  }
+    img {
+      margin-bottom: 5px;
+    }
 
-  &__item:hover {
-    outline: 3px solid #121212; // 要素のサイズを変えずに線をつける
-  }
+    &:hover {
+      outline: 3px solid #121212; // 要素のサイズを変えずに線をつける
+    }
 
-  &__item::before {
-    position: absolute;
-    content: "";
-    right: 4px;
-    bottom: 4px;
-    border-right: 20px solid #121212;
-    border-top: 20px solid transparent;
+    &::before {
+      content: "";
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+      border-right: 20px solid #121212;
+      border-top: 20px solid transparent;
+    }
   }
 }
 
@@ -488,10 +492,10 @@ button {
   &__item {
     border-right: #fff 1px solid;
     padding: 0 20px;
-  }
 
-  &__item:last-child {
-    border-right: none;
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 
@@ -571,12 +575,15 @@ button {
       padding: 0 25px;
 
       width: 300px;
-      background: #fff;
+      background-color: #fff;
 
       opacity: 0;
       transform: translateX(-100%);
       pointer-events: none;
-      transition: 0.5s ease;
+      transition:
+        transform 0.5s ease,
+        opacity 0.5s ease,
+        background-color 0.5s ease;
       z-index: 1000;
 
       &.open {

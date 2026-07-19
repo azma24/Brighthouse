@@ -127,7 +127,7 @@ button {
   width: 30px;
   height: 2px;
   background: #121212;
-  transition: 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, background-color 0.5s ease;
 }
 .hamburger span:nth-child(1) {
   top: 4px;
@@ -157,10 +157,10 @@ button {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   pointer-events: none;
-  transition: 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .overlay.open {
@@ -179,7 +179,7 @@ button {
 }
 .works__list {
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 50px;
 }
 .works__img {
@@ -283,7 +283,7 @@ button {
   transform: translateX(-50%);
   width: 50px;
   height: 600px;
-  background: #ffdd00;
+  background-color: #ffdd00;
   z-index: 0;
 }
 .flow__item {
@@ -338,7 +338,7 @@ button {
 }
 .flow__title {
   padding-bottom: 8px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #121212;
   font-size: 1.25rem;
 }
 .flow__text {
@@ -374,8 +374,8 @@ button {
   outline: 3px solid #121212;
 }
 .information__item::before {
-  position: absolute;
   content: "";
+  position: absolute;
   right: 4px;
   bottom: 4px;
   border-right: 20px solid #121212;
@@ -473,11 +473,11 @@ button {
     bottom: 0;
     padding: 0 25px;
     width: 300px;
-    background: #fff;
+    background-color: #fff;
     opacity: 0;
     transform: translateX(-100%);
     pointer-events: none;
-    transition: 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease, background-color 0.5s ease;
     z-index: 1000;
   }
   .header__menu.open {
